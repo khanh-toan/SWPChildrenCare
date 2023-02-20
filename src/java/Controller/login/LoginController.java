@@ -5,11 +5,13 @@
 
 package Controller.login;
 
+import DAO.UserDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.user;
 
 /**
  *
@@ -30,6 +32,13 @@ public class LoginController extends HttpServlet {
         String user_email = request.getParameter("user_email");
         String password = request.getParameter("password");
         boolean remember = request.getParameter("remember") != null;
+        
+        //check usename vaf password
+        user account = new UserDAO().login(user_email, password);
+        
+        if(account != null){
+            
+        }
     }
 
     /** 

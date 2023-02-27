@@ -69,6 +69,11 @@ public class SliderHomeServices {
         this.notes = notes;
     }
 
+    @Override
+    public String toString() {
+        return "SliderHomeServices{" + "slider_id=" + slider_id + ", service_id=" + service_id + ", image_link=" + image_link + ", service_title=" + service_title + ", notes=" + notes + '}';
+    }
+
    
     
 }

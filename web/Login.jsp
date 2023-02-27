@@ -1,9 +1,6 @@
-<%-- 
-    Document   : Login.jsp
-    Created on : Feb 16, 2023, 8:49:52 PM
-    Author     : admin
---%>
 
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -44,6 +41,10 @@
     </head>
     <body>
         <section class="vh-100">
+            <div style="margin-top: 50px" class="container-fluid h-custom">
+                <a href="home"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                    </svg></a>
                 <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col-md-9 col-lg-6 col-xl-5">
                         <img src="https://media.istockphoto.com/vectors/children-at-play-vector-id1187871269?k=20&m=1187871269&s=612x612&w=0&h=WwKXdsJvE7_9dDDkPa3REBgU8HEr13jzaBRQH-0O5qs="
@@ -52,25 +53,23 @@
 
                     <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                         <form name="login" action="login" method="POST"  onsubmit="required()">
-                            <h3 class="text-danger">${error}</h3>
                             <!-- Email input -->
-                            <c:if test="${user_email!=null}">
+                            <c:set var="cookie" value="${pageContext.request.cookies}"/>
                                 <div class="form-outline mb-4">                 
-
                                     <label class="form-label" for="user_email">Email address</label>
                                     <input type="email" id="username" class="form-control form-control-lg"
-                                           value="${user_email}" placeholder="Enter a valid email address" name="user_email" ${sessionScope.user_email}/>
+                                           value="${cookie.user_email.value}" placeholder="Enter a valid email address" name="user_email"/>
                                 </div>
-                            </c:if>
+                            
                             <div class="form-outline mb-3">
                                 <i class="far fa-eye" id="togglePassword" style="cursor: pointer;"></i>
                                 <label class="form-label" for="password">Password</label>
                                 <div>
                                     <input type="password" id="password" class="form-control form-control-lg"
-                                           placeholder="Enter password" name="password"/>
+                                           placeholder="Enter password" name="password" value="${cookie.password.value}" />
                                 </div>
                             </div>
-                                
+                            <h3 class="text-danger">${error}</h3>
                             <div class="d-flex justify-content-between align-items-center">
                                 <!-- Checkbox -->
                                 <div class="form-check mb-0">
@@ -79,14 +78,12 @@
                                         Remember me
                                     </label>
                                 </div>
-
                                 <a href="resetpassword" class="text-body link-danger">Forgot password?</a>
                             </div>
 
                             <div class="text-center text-lg-start mt-4 pt-2">
-                                <button type="submit" style="width:100%" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">
-                                    Login
-                                </button>
+                                <button type="submit" style="width:100%" class="btn btn-primary btn-lg"
+                                        style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
                                 <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? 
                                     <a href="register"class="link-danger">Register</a>
                                 </p>
@@ -97,9 +94,9 @@
             </div>
 
         </section>
-        
+
         <%@include file="Component/Footer.jsp"%>
-     
+
         <div id="preloader"></div>
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

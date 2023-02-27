@@ -9,38 +9,39 @@
                 <li>
                     <a class="nav-link scrollto active" href="home">Home</a>
                 </li>
-                    <c:if test="${sessionScope.listSetting.get(1).setting_status==true}">
+                <c:if test="${sessionScope.listSetting.get(1).setting_status==true}">
                     <li>
                         <a class="nav-link scrollto" href="servicelist">Services</a>
                     </li>
-                    </c:if>
-                    
-                    <c:if test="${sessionScope.listSetting.get(3).setting_status==true}">
+                </c:if>
+
+                <c:if test="${sessionScope.listSetting.get(3).setting_status==true}">
                     <li>
                         <a class="nav-link scrollto" href="blogs-list">Blogs</a>
                     </li>
-                    </c:if>
-                    
-                    <c:if test="${sessionScope.listSetting.get(5).setting_status==true}">
+                </c:if>
+
+                <c:if test="${sessionScope.listSetting.get(5).setting_status==true}">
                     <li>
                         <a class="nav-link scrollto" href="feedback">Feedback</a>
                     </li>
-                    </c:if>
-                    
-                    <c:if test="${sessionScope.admin != null}">
+                </c:if>
+
+                <c:if test="${sessionScope.admin != null}">
                     <li>
-                        <a class="nav-link scrollto" href="/project_swp391/Admin/AdminDashBoard">Admin</a>
+                        <a class="nav-link scrollto" href="AdminDashboard">Admin</a>
                     </li>
-                    </c:if>
-                    <c:if test="${sessionScope.account.user_role == 5}">
+                </c:if>
+                    
+                <c:if test="${sessionScope.account.user_role == 5}">
                     <li class="dropdown"><a href="#"><span>Manager</span><i class="bi bi-chevron-right"></i></a>
                         <ul>
                             <li><a href="medicalexamination">Medical examination</a></li>
-                            <li><a href="/project_swp391/FeedbackManagerServlet">Feedback List</a></li>
-                            <li><a href="/project_swp391/ReservationListController">Reservation List</a></li>
-                            <li><a href="/project_swp391/listslidermanager">Slider List Manager</a></li>
-                            <li><a href="/project_swp391/servicelistmanager">Service List Manager</a></li>
-                            <li><a href="/project_swp391/customerList">Customer List Manager</a></li>
+                            <li><a href="FeedbackManagerServlet">Feedback List</a></li>
+                            <li><a href="ReservationListController">Reservation List</a></li>
+                            <li><a href="listslidermanager">Slider List Manager</a></li>
+                            <li><a href="servicelistmanager">Service List Manager</a></li>
+                            <li><a href="customerList">Customer List Manager</a></li>
 
                         </ul>
                     </li>
@@ -50,7 +51,7 @@
                         <ul>
                             <li><a href="user_profile">Edit profile</a></li>
                             <li><a href="myreservation">My Reservation</a></li>
-                            <li><a href="changpassword">Change Password</a></li>
+                            <li><a href="changepassword">Change Password</a></li>
                             <li><a href="logout">Logout</a></li>
                         </ul>
                     </li>

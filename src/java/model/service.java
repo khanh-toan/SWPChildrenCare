@@ -13,6 +13,7 @@ import java.util.List;
  * @author admin
  */
 public class service {
+
     private int service_id;
     private String service_title;
     private String services_bi;
@@ -23,6 +24,11 @@ public class service {
     private String service_detail;
     public int service_rateStar;
     private int service_vote;
+
+    @Override
+    public String toString() {
+        return "service{" + "service_id=" + service_id + ", service_title=" + service_title + ", services_bi=" + services_bi + ", service_created_date=" + service_created_date + ", category_id=" + category_id + ", service_price=" + service_price + ", service_discount=" + service_discount + ", service_detail=" + service_detail + ", service_rateStar=" + service_rateStar + ", service_vote=" + service_vote + ", image=" + image + '}';
+    }
     public List<image> image;
 
     public service() {
@@ -129,6 +135,5 @@ public class service {
     public void setImage(List<image> image) {
         this.image = image;
     }
-    
-    
+
 }

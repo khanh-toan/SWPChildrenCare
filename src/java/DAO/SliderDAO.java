@@ -91,7 +91,7 @@ public class SliderDAO {
         }
         return null;
     }
-    
+
     public void editsliderDetailmanager(String title, String image, String notes, int sidd) throws Exception {
         try {
             Connection connection = new DBContext().getConnection();
@@ -185,8 +185,6 @@ public class SliderDAO {
         }
     }
 
-    
-    
     public List<listslidermanager> searchslidemanager(String txt) {
         List<listslidermanager> list = new ArrayList<>();
         try {
@@ -225,8 +223,12 @@ public class SliderDAO {
     public List<SliderHomeServices> getAllSliderHomePage() {
         List<SliderHomeServices> list = new ArrayList<>();
         try {
-            String sql = "select s.slider_id, sv.service_id, si.image_link, sv.service_title, s.notes from slider s join slider_services sl on s.slider_id = sl.slider_id join service sv on sl.service_id = sv.service_id \n" +
-"                  join service_image si on s.service_id = si.service_id where s.slider_status = 1 order by s.slider_id";
+            String sql = "select s.slider_id, sv.service_id, si.image_link, sv.service_title, s.notes \n"
+                    + "from slider s JOIN slider_services sl \n"
+                    + "on s.slider_id = sl.slider_id JOIN [service] sv \n"
+                    + "on sl.service_id = sv.service_id JOIN service_image si \n"
+                    + "on s.service_id = si.service_id\n"
+                    + "where s.slider_status = 1 order by s.slider_id";
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -246,10 +248,13 @@ public class SliderDAO {
         }
         return list;
     }
-    
-     public static void main(String[] args) {
+
+    public static void main(String[] args) {
         SliderDAO s = new SliderDAO();
-        s.setStatus(1,1);
+        List<SliderHomeServices> list = s.getAllSliderHomePage();
+        for (SliderHomeServices sa : list) {
+            System.out.println(sa);
+        }
     }
-   
+
 }
